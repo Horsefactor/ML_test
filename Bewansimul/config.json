@@ -1,0 +1,13 @@
+{
+    "mysql": {
+        "host": "localhost",
+        "user": "root",
+        "password": "",
+        "port": 3306
+    },
+    "api": {
+        "url": "http://history.openweathermap.org/data/2.5/history/city?q={city_name},{country_code}&type=hour&start={start}&end={end}&appid={API key}",
+        "response": "time.updated",
+        "api_key": ""
+    }
+}
