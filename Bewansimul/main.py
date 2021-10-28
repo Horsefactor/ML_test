@@ -8,7 +8,7 @@ from package.api import API
 import random
 import numpy as np
 
-
+# get public holiday data from ileo database
 def getPubHoliday():
     request = "SELECT type, date " \
               "FROM time_hr_publicholidays " \
@@ -21,7 +21,7 @@ def getPubHoliday():
 
     return response
 
-
+#get scolar holiday from hardcoding
 def getScoHoliday():
     scoholiday = []
     # winter 2019
@@ -84,7 +84,7 @@ def getScoHoliday():
 
     return scoholiday
 
-
+#load weather data from json ==> not used for now
 def main():
     with open('weather.json') as wth:
         wthData = json.load(wth)
@@ -96,7 +96,7 @@ def main():
                       elem['clouds']['all']] for elem in wthData['list']]
         print(wthByHour)
 
-
+#format time data
 def get_time_data(start, end):
     # day_id, leave
     # (0->6), (0->2)
@@ -124,7 +124,7 @@ def get_time_data(start, end):
 
     return day_list
 
-
+#generate fakedata to train
 def get_fake_hourly_data(liste):
     liste2 = []
 
@@ -163,7 +163,7 @@ def get_client_number(typeofday, day, hour, temp):
 
     return score*15 + random.randrange(0, 20)
 
-
+#save the data generated in fakedata.csv
 if __name__ == '__main__':
     start_2019 = datetime.date(2019, 1, 1)
     now = datetime.date.today()
